@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ru" data-motion="on">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#111112">
+  <title>UPstar — придумай стартап за два клика</title>
+  <meta name="description" content="UPstar: выберите «Что/Кто?» и «Для кого?» — получите смешной, но реальный стартап, пошаговый план запуска и симулятор дохода с ползунками.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%270%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%238bff9a%27%2F%3E%3Cstop%20offset%3D%27.45%27%20stop-color%3D%27%2319ff3a%27%2F%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%2300c21f%27%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2715%27%20fill%3D%27url%28%23g%29%27%2F%3E%3Cg%20transform%3D%27translate%288%208%29%20scale%28.75%29%27%3E%3Cpath%20d%3D%27M32%200%20C35%2018%2046%2029%2064%2032%20C46%2035%2035%2046%2032%2064%20C29%2046%2018%2035%200%2032%20C18%2029%2029%2018%2032%200%20Z%27%20fill%3D%27%230b0b0b%27%2F%3E%3Cpath%20d%3D%27M22%2038%20L32%2026.5%20L42%2038%27%20fill%3D%27none%27%20stroke%3D%27url%28%23g%29%27%20stroke-width%3D%275.8%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+  <script>
+    /* Режим анимаций определяем до первой отрисовки: выбор пользователя, иначе системная настройка */
+    (function () {
+      var m = null;
+      try { m = localStorage.getItem('upstar.motion'); } catch (e) { m = null; }
+      if (m !== 'on' && m !== 'off') m = (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) ? 'off' : 'on';
+      document.documentElement.setAttribute('data-motion', m);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false"><defs><linearGradient id="up-neon" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8bff9a"/><stop offset=".45" stop-color="#19ff3a"/><stop offset="1" stop-color="#00c21f"/></linearGradient><linearGradient id="up-silver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#cdcdcd"/><stop offset="1" stop-color="#8f8f8f"/></linearGradient></defs><symbol id="i-phone" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="19" y="6" width="26" height="52" rx="6"/><path d="M28 12h8"/><circle cx="32" cy="51" r="1.8"/><path d="M26 24h12M26 31h12M26 38h7"/></g></symbol><symbol id="i-ai" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12h44a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H30l-12 10V44h-8a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4z"/><path d="M32 18c.9 5.6 3.4 8.1 9 9-5.6.9-8.1 3.4-9 9-.9-5.6-3.4-8.1-9-9 5.6-.9 8.1-3.4 9-9z"/></g></symbol><symbol id="i-drone" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="25" y="25" width="14" height="14" rx="4"/><path d="M27 27L18 18M37 27l9-9M27 37l-9 9M37 37l9 9"/><circle cx="14" cy="14" r="8"/><circle cx="50" cy="14" r="8"/><circle cx="14" cy="50" r="8"/><circle cx="50" cy="50" r="8"/></g></symbol><symbol id="i-shop" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22h40l-3 34H15z"/><path d="M22 22v-4a10 10 0 0 1 20 0v4"/><path d="M26 34c1 4 3 6 6 6s5-2 6-6"/></g></symbol><symbol id="i-cap" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 24L32 11l29 13-29 13z"/><path d="M15 31v13c0 4.5 7.5 9 17 9s17-4.5 17-9V31"/><path d="M58 26v15"/></g></symbol><symbol id="i-band" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="21" y="17" width="22" height="30" rx="7"/><path d="M25 17l2-11h10l2 11M25 47l2 11h10l2-11"/><path d="M32 25v8l5 3"/></g></symbol><symbol id="i-chat" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10h48v34H28l-12 10V44H8z"/><circle cx="21" cy="27" r="2.4"/><circle cx="32" cy="27" r="2.4"/><circle cx="43" cy="27" r="2.4"/></g></symbol><symbol id="i-robot" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="20" width="38" height="30" rx="9"/><circle cx="24" cy="34" r="4.5"/><circle cx="40" cy="34" r="4.5"/><path d="M32 20v-8"/><circle cx="32" cy="9" r="3"/><path d="M7 32v10M57 32v10M26 56h12"/></g></symbol><symbol id="i-box" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20l24-12 24 12v26L32 58 8 46z"/><path d="M8 20l24 12 24-12M32 32v26"/><path d="M20 14l24 12"/></g></symbol><symbol id="i-scooter" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="50" r="7"/><circle cx="52" cy="50" r="7"/><path d="M21 50h22l8-36"/><path d="M45 14h12"/><path d="M43 50l4-14"/></g></symbol><symbol id="i-home" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 30L32 8l27 22"/><path d="M12 27v28h40V27"/><path d="M24 41a11 11 0 0 1 16 0M19 35a19 19 0 0 1 26 0"/><circle cx="32" cy="47" r="2"/></g></symbol><symbol id="i-printer" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="48" height="48" rx="5"/><path d="M14 16h36"/><path d="M26 16v8h12v-8"/><path d="M24 50l8-4 8 4-8 4z"/><path d="M24 50v-7l8-4 8 4v7"/></g></symbol><symbol id="i-vr" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22h52a2 2 0 0 1 2 2v20a4 4 0 0 1-4 4H44l-4-9H24l-4 9H10a4 4 0 0 1-4-4V24a2 2 0 0 1 2-2z"/><circle cx="20" cy="34" r="3"/><circle cx="44" cy="34" r="3"/></g></symbol><symbol id="i-people" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="32" cy="21" r="8"/><path d="M16 53c0-9 7-15 16-15s16 6 16 15"/><circle cx="12" cy="27" r="5"/><circle cx="52" cy="27" r="5"/><path d="M3 49c0-6 4-10 10-10M61 49c0-6-4-10-10-10"/></g></symbol><symbol id="i-spark" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 0 C35 18 46 29 64 32 C46 35 35 46 32 64 C29 46 18 35 0 32 C18 29 29 18 32 0 Z"/><path d="M22 38 L32 26.5 L42 38"/></g></symbol><symbol id="u-arrow" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></g></symbol><symbol id="u-edit" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16v4z"/><path d="M13 7l4 4"/></g></symbol><symbol id="u-trash" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12M10 11v5M14 11v5"/></g></symbol><symbol id="u-bolt" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></g></symbol><symbol id="u-bulb" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></g></symbol><symbol id="u-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14c2.8 0 5 2.2 5 5"/></g></symbol><symbol id="u-target" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></g></symbol><symbol id="u-coin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 17V7h3.5a2.5 2.5 0 0 1 0 5H10M8 15h6"/></g></symbol><symbol id="u-mega" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h2l6 4V6L6 10H4a1 1 0 0 0-1 1zM16 9a4 4 0 0 1 0 6"/></g></symbol><symbol id="u-flag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></g></symbol><symbol id="u-cube" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l9 5v10l-9 5-9-5V7zM12 12l9-5M12 12v10M12 12L3 7"/></g></symbol><symbol id="u-warn" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2zM12 10v5M12 18v.5"/></g></symbol><symbol id="u-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></g></symbol><symbol id="u-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19a2 2 0 0 0 2 2h13"/></g></symbol><symbol id="u-wallet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 7l12-4v4M16 14h2"/></g></symbol><symbol id="u-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol><symbol id="u-tool" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-3 3-2-2z"/></g></symbol><symbol id="u-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 9h10v10H9zM5 15V5h10"/></g></symbol><symbol id="u-refresh" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 4v5h-5M20 12a8 8 0 0 1-14 5l-2-2M4 20v-5h5"/></g></symbol><symbol id="u-graduate" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5zM6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></g></symbol><symbol id="u-quote" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17h3l2-4V7H6v6h3zM16 17h3l2-4V7h-6v6h3z"/></g></symbol><symbol id="upstar-mark" viewBox="0 0 64 64"><path d="M32 0 C35 18 46 29 64 32 C46 35 35 46 32 64 C29 46 18 35 0 32 C18 29 29 18 32 0 Z" fill="url(#up-neon)"/><path d="M22 38 L32 26.5 L42 38" fill="none" stroke="#0b0b0b" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="upstar-mark-silver" viewBox="0 0 64 64"><path d="M32 0 C35 18 46 29 64 32 C46 35 35 46 32 64 C29 46 18 35 0 32 C18 29 29 18 32 0 Z" fill="url(#up-silver)"/><path d="M22 38 L32 26.5 L42 38" fill="none" stroke="#0b0b0b" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="upstar-wordmark" viewBox="0 -102 326 104"><path d="M25.35 -25.49Q25.35 -20.14 26.62 -16.27Q27.89 -12.39 30.07 -9.93Q32.25 -7.46 35.14 -6.41Q38.03 -5.35 41.55 -5.35Q45.49 -5.35 48.66 -6.69Q51.83 -8.03 54.08 -10.63Q56.34 -13.24 57.54 -17.39Q58.73 -21.55 58.73 -27.18V-92.11Q58.73 -93.1 58.38 -93.66Q58.03 -94.23 57.18 -94.65Q56.34 -95.07 55.07 -95.28Q53.8 -95.49 52.25 -95.49H50.28V-100H71.41V-95.49H70.42Q68.87 -95.49 67.32 -94.79Q65.77 -94.08 64.86 -92.39Q63.94 -90.7 63.94 -87.75V-27.89Q63.94 -20 61.97 -14.37Q60 -8.73 56.41 -5.21Q52.82 -1.69 48.03 0Q43.24 1.69 37.75 1.69Q31.97 1.69 26.97 0Q21.97 -1.69 18.17 -5.28Q14.37 -8.87 12.18 -14.37Q10 -19.86 10 -27.32V-90.56Q10 -93.52 8.03 -94.51Q6.06 -95.49 3.38 -95.49H2.54V-100H32.82V-95.49H31.83Q30.7 -95.49 29.51 -95.42Q28.31 -95.35 27.39 -95.14Q26.48 -94.93 25.92 -94.72Q25.35 -94.51 25.35 -94.08ZM98.66 -7.75V-94.93H106.69Q111.76 -94.93 115 -92.39Q118.24 -89.86 119.86 -85.14Q121.48 -80.42 121.48 -73.66Q121.48 -66.62 119.86 -61.62Q118.24 -56.62 114.86 -53.87Q111.48 -51.13 106.12 -51.13H94.15V-46.2H107.95Q116.83 -46.2 123.31 -49.58Q129.79 -52.96 133.24 -59.15Q136.69 -65.35 136.69 -73.66Q136.69 -85.77 129.22 -92.89Q121.76 -100 108.38 -100H75.7V-95.49H76.55Q79.22 -95.49 81.26 -94.51Q83.31 -93.52 83.31 -90.56V-9.44Q83.31 -6.48 81.34 -5.49Q79.36 -4.51 76.55 -4.51H75.7V0H107.53V-4.51H105.56Q104.43 -4.51 103.24 -4.65Q102.04 -4.79 100.98 -5.07Q99.93 -5.35 99.29 -5.99Q98.66 -6.62 98.66 -7.75Z" fill="url(#up-neon)"/><path d="M174.17 -15.07Q174.17 -18.31 173.25 -20.63Q172.34 -22.96 170.44 -24.79Q168.54 -26.62 166 -28.24Q163.47 -29.86 160.09 -31.83Q156.99 -33.52 154.1 -35.63Q151.21 -37.75 148.82 -40.35Q146.42 -42.96 145.09 -46.34Q143.75 -49.72 143.75 -54.37Q143.75 -60.56 146.49 -65.14Q149.24 -69.72 154.38 -72.11Q159.52 -74.51 166.42 -74.51Q170.65 -74.51 173.96 -73.73Q177.27 -72.96 179.52 -71.76Q181.78 -70.56 182.9 -69.44V-56.76H171.78V-70.56Q172.76 -70.7 173.68 -70Q174.59 -69.3 175.16 -68.38Q175.72 -67.46 175.93 -66.62Q176.14 -65.77 175.72 -65.49Q174.73 -67.04 173.25 -67.96Q171.78 -68.87 169.95 -69.37Q168.11 -69.86 165.86 -69.86Q159.8 -69.86 157.48 -66.97Q155.16 -64.08 155.16 -60Q155.16 -57.04 156.21 -54.79Q157.27 -52.54 159.24 -50.7Q161.21 -48.87 163.96 -47.25Q166.71 -45.63 169.8 -43.8Q172.9 -42.11 175.79 -39.93Q178.68 -37.75 181 -35Q183.33 -32.25 184.73 -28.66Q186.14 -25.07 186.14 -20.28Q186.14 -13.66 183.4 -8.8Q180.65 -3.94 175.51 -1.27Q170.37 1.41 163.04 1.41Q158.25 1.41 154.24 0.35Q150.23 -0.7 147.27 -2.39Q144.31 -4.08 142.62 -5.77V-19.01H154.31V-3.38Q153.33 -4.08 152.62 -4.65Q151.92 -5.21 151.49 -5.7Q151.07 -6.2 151 -6.9Q150.93 -7.61 151.21 -8.45Q152.48 -6.62 154.31 -5.42Q156.14 -4.23 158.33 -3.73Q160.51 -3.24 162.76 -3.24Q167.27 -3.24 169.73 -4.93Q172.2 -6.62 173.18 -9.37Q174.17 -12.11 174.17 -15.07ZM188.6 -68.45V-72.68H188.89Q191.7 -72.68 193.6 -73.59Q195.51 -74.51 196.56 -76.62Q197.62 -78.73 197.9 -82.25L199.73 -73.1H222.83V-68.45ZM210.15 -14.37Q210.15 -10.42 211.07 -8.17Q211.98 -5.92 213.75 -5Q215.51 -4.08 217.62 -4.08Q220.01 -4.08 221.56 -4.79Q223.11 -5.49 223.82 -5.92V-0.99Q222.97 -0.42 221.49 0.14Q220.01 0.7 217.97 1.06Q215.93 1.41 213.25 1.41Q208.32 1.41 204.31 -0.28Q200.29 -1.97 197.9 -5.77Q195.51 -9.58 195.51 -15.92V-72.96L197.34 -73.8L198.75 -91.55H210.15ZM262.9 -42.96V-38.59Q258.81 -38.03 255.57 -36.76Q252.33 -35.49 250.08 -33.66Q247.83 -31.83 246.35 -29.37Q244.87 -26.9 244.16 -23.94Q243.46 -20.99 243.46 -17.61Q243.46 -13.24 244.52 -10.49Q245.57 -7.75 247.55 -6.41Q249.52 -5.07 251.91 -5.07Q254.73 -5.07 256.91 -6.69Q259.09 -8.31 260.57 -11.27Q262.05 -14.23 263.04 -18.31L263.18 -11.41Q262.33 -7.46 260.01 -4.65Q257.69 -1.83 254.31 -0.21Q250.93 1.41 246.7 1.41Q241.63 1.41 237.69 -0.77Q233.74 -2.96 231.63 -6.97Q229.52 -10.99 229.52 -16.62Q229.52 -22.25 231.63 -26.55Q233.74 -30.85 237.9 -33.94Q242.05 -37.04 248.32 -39.3Q254.59 -41.55 262.9 -42.96ZM262.33 0V-11.97L261.35 -11.41V-56.06Q261.35 -61.27 260.29 -64.23Q259.24 -67.18 257.12 -68.52Q255.01 -69.86 251.49 -69.86Q247.69 -69.86 244.8 -68.45Q241.91 -67.04 240.08 -64.08Q240.08 -66.2 240.57 -67.46Q241.07 -68.73 241.84 -69.37Q242.62 -70 243.46 -70.21Q244.31 -70.42 245.15 -70.28V-54.08H233.04V-67.32Q234.59 -68.73 237.33 -70.35Q240.08 -71.97 244.38 -73.24Q248.67 -74.51 254.45 -74.51Q259.24 -74.51 263.11 -73.38Q266.98 -72.25 269.94 -69.79Q272.9 -67.32 274.45 -63.45Q276 -59.58 276 -53.94V-9.3Q276 -7.46 276.7 -6.48Q277.4 -5.49 278.74 -5.07Q280.08 -4.65 281.63 -4.65L282.19 -4.51V0ZM323.81 -73.94V-60.42Q323.11 -60.7 322.19 -60.85Q321.27 -60.99 320.22 -61.06Q319.16 -61.13 317.89 -61.13Q315.92 -61.13 314.09 -60.77Q312.26 -60.42 310.57 -59.23Q308.88 -58.03 307.47 -55.77Q306.06 -53.52 304.8 -49.72V-56.48Q306.77 -62.96 309.02 -66.9Q311.27 -70.85 314.09 -72.61Q316.91 -74.37 320.43 -74.37Q321.56 -74.37 322.4 -74.3Q323.25 -74.23 323.81 -73.94ZM285.5 0V-4.51H285.64Q288.32 -4.51 290.08 -5.42Q291.84 -6.34 291.84 -9.3V-62.68Q291.84 -64.51 291.27 -65.49Q290.71 -66.48 289.58 -67.18Q288.46 -67.89 286.63 -68.31L285.5 -68.59V-73.1H305.36V-56.2L306.49 -57.18V-5.77Q306.49 -5.35 307.4 -5.07Q308.32 -4.79 309.87 -4.65Q311.42 -4.51 312.96 -4.51H314.65V0Z" fill="url(#up-silver)"/></symbol></svg>
+  <a class="skip-link" href="#create">К выбору идеи</a>
+
+  <div class="hero" id="top">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="UPstar — на главную">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#upstar-mark"/></svg>
+        <svg class="brand-word" viewBox="0 0 326 104" aria-hidden="true" focusable="false"><use href="#upstar-wordmark"/></svg>
+      </a>
+      <nav class="glass-nav" aria-label="Разделы страницы">
+        <a href="#top">Главная</a>
+        <a href="#how">Как это работает</a>
+        <a href="#create">Выбор идеи</a>
+        <a href="#result" id="nav-result" aria-disabled="true" tabindex="-1">Твой стартап</a>
+        <button type="button" id="motion-toggle" class="nav-toggle" aria-pressed="true">
+          <span class="nav-toggle-dot" aria-hidden="true"></span>
+          <span id="motion-label">Анимации: вкл</span>
+        </button>
+      </nav>
+      <a class="cta-block" href="#create">
+        <svg class="cta-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#u-arrow"/></svg>
+        <span>Придумать стартап</span>
+      </a>
+    </header>
+
+    <section class="hero-body" aria-labelledby="hero-title">
+      <div class="hero-art" aria-hidden="true">
+        <i class="deco deco-a"></i><i class="deco deco-b"></i>
+        <svg class="hero-orb" viewBox="0 0 700 700" focusable="false">
+          <defs>
+            <radialGradient id="o-disc" cx="34%" cy="28%" r="90%">
+              <stop offset="0" stop-color="#3d3d40"/><stop offset=".5" stop-color="#1e1e20"/><stop offset="1" stop-color="#0b0b0c"/>
+            </radialGradient>
+            <linearGradient id="o-rim" x1=".1" y1="0" x2=".9" y2="1">
+              <stop offset="0" stop-color="#e2e2e2"/><stop offset=".35" stop-color="#4c4c4f"/><stop offset=".7" stop-color="#19191a"/><stop offset="1" stop-color="#3c3c3f"/>
+            </linearGradient>
+            <radialGradient id="o-sphere" cx="35%" cy="30%" r="75%">
+              <stop offset="0" stop-color="#d4d4d4"/><stop offset=".3" stop-color="#707073"/><stop offset=".75" stop-color="#1c1c1e"/><stop offset="1" stop-color="#0c0c0d"/>
+            </radialGradient>
+            <linearGradient id="o-pill" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#f0f0f0"/><stop offset=".5" stop-color="#5a5a5d"/><stop offset="1" stop-color="#1b1b1c"/>
+            </linearGradient>
+            <filter id="o-blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="18"/></filter>
+            <filter id="o-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <ellipse cx="360" cy="662" rx="250" ry="24" fill="#000" opacity=".55" filter="url(#o-blur)"/>
+          <circle cx="350" cy="340" r="312" fill="url(#o-disc)"/>
+          <circle cx="350" cy="340" r="311" fill="none" stroke="url(#o-rim)" stroke-width="3"/>
+          <circle cx="350" cy="340" r="268" fill="none" stroke="#fff" stroke-opacity=".07" stroke-width="2"/>
+          <use class="orb-mark" href="#upstar-mark-silver" x="190" y="180" width="320" height="320"/>
+          <g class="orb-sphere"><circle cx="112" cy="474" r="104" fill="url(#o-sphere)"/></g>
+          <g class="orb-burst" filter="url(#o-glow)"><g transform="translate(590 168)"><g stroke="#19ff3a" stroke-width="5" stroke-linecap="round" fill="none"><line x1="0" y1="0" x2="0.0" y2="-60.0"/><line x1="0" y1="0" x2="16.1" y2="-33.3"/><line x1="0" y1="0" x2="46.9" y2="-37.4"/><line x1="0" y1="0" x2="36.1" y2="-8.2"/><line x1="0" y1="0" x2="58.5" y2="13.4"/><line x1="0" y1="0" x2="28.9" y2="23.1"/><line x1="0" y1="0" x2="26.0" y2="54.1"/><line x1="0" y1="0" x2="0.0" y2="37.0"/><line x1="0" y1="0" x2="-26.0" y2="54.1"/><line x1="0" y1="0" x2="-28.9" y2="23.1"/><line x1="0" y1="0" x2="-58.5" y2="13.4"/><line x1="0" y1="0" x2="-36.1" y2="-8.2"/><line x1="0" y1="0" x2="-46.9" y2="-37.4"/><line x1="0" y1="0" x2="-16.1" y2="-33.3"/></g><circle r="5.5" fill="#19ff3a"/></g></g>
+          <g class="orb-pill"><rect x="-15" y="-56" width="30" height="112" rx="15" transform="translate(648 214) rotate(42)" fill="url(#o-pill)" stroke="#9a9a9d" stroke-opacity=".5"/></g>
+          <g class="orb-plus" filter="url(#o-glow)"><path transform="translate(182 100)" d="M0 -36 C2 -11 11 -2 36 0 C11 2 2 11 0 36 C-2 11 -11 2 -36 0 C-11 -2 -2 -11 0 -36Z" fill="url(#up-neon)"/></g>
+        </svg>
+      </div>
+
+      <div class="hero-copy">
+        <p class="hero-kicker">Придумай стартап за два клика с</p>
+        <h1 id="hero-title" class="hero-title"><span class="sr-only">UPstar</span><span class="hero-line gradient-text" aria-hidden="true">UP</span><span class="hero-line gradient-text" aria-hidden="true">STAR</span></h1>
+      </div>
+      <p class="hero-note">Выбирайте идею и аудиторию — и смотрите, как растёт ваш будущий бизнес. <b>Смешно, но <span class="nowrap">по-настоящему.</span></b></p>
+    </section>
+  </div>
+
+  <main>
+    <section id="how" class="section how" aria-labelledby="how-title">
+      <h2 id="how-title" class="section-title gradient-text">Как это работает</h2>
+      <ol class="steps">
+        <li class="step glass"><span class="step-num gradient-text" aria-hidden="true">01</span><h3>Выбери «Что/Кто?»</h3><p>Продукт, технология или существо — от дрона до чат-бота. Нет нужного? Допиши своё.</p></li>
+        <li class="step glass"><span class="step-num gradient-text" aria-hidden="true">02</span><h3>Выбери «Для кого?»</h3><p>Студенты, фермеры, врачи, геймеры… Аудитория решает, где болит и кто платит.</p></li>
+        <li class="step glass"><span class="step-num gradient-text" aria-hidden="true">03</span><h3>Получи стартап</h3><p>Название, идея простыми словами, план запуска и дашборд, которым можно управлять ползунками.</p></li>
+      </ol>
+    </section>
+
+    <section id="create" class="section create" aria-labelledby="create-title">
+      <h2 id="create-title" class="section-title gradient-text">Собери пару</h2>
+      <p class="section-lead">Выбери по одному варианту. Не нашёл своё — допиши: например, «Квадрокоптер» и «Космонавты».</p>
+
+      <div class="windows">
+        <section class="panel glass" data-panel="what" aria-labelledby="what-title">
+          <h3 id="what-title">Что/Кто?</h3>
+          <p class="panel-sub">Продукт, технология или сущность</p>
+          <ul class="items" aria-labelledby="what-title" aria-describedby="list-hint"></ul>
+          <p class="empty" hidden>Список пуст. Добавьте свой вариант или сбросьте списки к исходным.</p>
+          <form class="add-form" aria-labelledby="what-title" novalidate>
+            <label class="form-label" id="what-form-label" for="what-input">Новый вариант</label>
+            <div class="form-row">
+              <input id="what-input" type="text" autocomplete="off" placeholder="Например, Квадрокоптер"
+                     aria-labelledby="what-form-label what-title" aria-describedby="what-error">
+              <button type="submit" class="btn btn-primary submit">Добавить</button>
+              <button type="button" class="btn cancel" hidden>Отмена</button>
+            </div>
+            <p class="error" id="what-error" role="alert"></p>
+          </form>
+        </section>
+
+        <section class="panel glass" data-panel="who" aria-labelledby="who-title">
+          <h3 id="who-title">Для кого?</h3>
+          <p class="panel-sub">Целевая аудитория</p>
+          <ul class="items" aria-labelledby="who-title" aria-describedby="list-hint"></ul>
+          <p class="empty" hidden>Список пуст. Добавьте свой вариант или сбросьте списки к исходным.</p>
+          <form class="add-form" aria-labelledby="who-title" novalidate>
+            <label class="form-label" id="who-form-label" for="who-input">Новый вариант</label>
+            <div class="form-row">
+              <input id="who-input" type="text" autocomplete="off" placeholder="Например, Космонавты"
+                     aria-labelledby="who-form-label who-title" aria-describedby="who-error">
+              <button type="submit" class="btn btn-primary submit">Добавить</button>
+              <button type="button" class="btn cancel" hidden>Отмена</button>
+            </div>
+            <p class="error" id="who-error" role="alert"></p>
+          </form>
+        </section>
+      </div>
+
+      <p class="hint" id="list-hint">В списках работают стрелки: ↑ ↓ — между вариантами, ← → — между кнопками «выбрать», «изменить», «удалить».</p>
+
+      <!-- Уведомления лежат в потоке до кнопок, чтобы до «Отменить» можно было дойти с клавиатуры; показываются поверх страницы -->
+      <div id="toasts" class="toasts" aria-live="polite" aria-atomic="false"></div>
+
+      <div class="actions">
+        <button type="button" id="generate" class="btn btn-primary btn-large" aria-describedby="generate-hint" disabled>Создать стартап</button>
+        <p id="generate-hint" class="generate-hint" aria-live="polite">Выберите по одному варианту в каждом окне.</p>
+        <button type="button" id="reset" class="btn btn-quiet">Сбросить к исходным</button>
+      </div>
+      <p id="storage-note" class="note" hidden>Сохранение недоступно в этом браузере: изменения в списках пропадут после перезагрузки страницы.</p>
+      <noscript><p class="note">Для работы UPstar нужен включённый JavaScript.</p></noscript>
+    </section>
+
+    <section id="result" class="result" aria-labelledby="result-title" hidden>
+      <div class="poster glass">
+        <div class="poster-art" aria-hidden="true">
+          <svg class="poster-orb" viewBox="0 0 400 400" focusable="false">
+            <defs>
+              <radialGradient id="p-disc" cx="34%" cy="28%" r="90%"><stop offset="0" stop-color="#3d3d40"/><stop offset=".55" stop-color="#1b1b1d"/><stop offset="1" stop-color="#0b0b0c"/></radialGradient>
+              <radialGradient id="p-sphere" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#d4d4d4"/><stop offset=".3" stop-color="#707073"/><stop offset=".75" stop-color="#1c1c1e"/><stop offset="1" stop-color="#0c0c0d"/></radialGradient>
+              <filter id="p-glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <circle cx="200" cy="200" r="184" fill="url(#p-disc)"/>
+            <circle cx="200" cy="200" r="183" fill="none" stroke="url(#o-rim)" stroke-width="2.5"/>
+            <circle cx="200" cy="200" r="158" fill="none" stroke="#fff" stroke-opacity=".07" stroke-width="1.5"/>
+            <g class="poster-icon" id="poster-icon" transform="translate(112 112)"></g>
+            <circle class="poster-sphere" cx="62" cy="292" r="56" fill="url(#p-sphere)"/>
+            <g filter="url(#p-glow)" class="poster-spark"><path transform="translate(328 70)" d="M0 -26 C1.8 -8 8 -1.5 26 0 C8 1.5 1.8 8 0 26 C-1.8 8 -8 1.5 -26 0 C-8 -1.5 -1.8 -8 0 -26Z" fill="url(#up-neon)"/></g>
+          </svg>
+        </div>
+        <div class="poster-text">
+          <p class="eyebrow" id="result-pair"></p>
+          <h2 id="result-title" class="poster-title gradient-text" tabindex="-1"></h2>
+          <p class="slogan" id="result-slogan"></p>
+          <p class="pitch" id="result-pitch"></p>
+          <p class="grandma" id="result-grandma"></p>
+          <div class="poster-actions">
+            <button type="button" id="regen" class="btn btn-primary">Создать заново</button>
+            <button type="button" id="copy" class="btn">Копировать всё</button>
+          </div>
+        </div>
+      </div>
+
+      <nav class="chips-nav" aria-label="Разделы стартапа">
+        <a href="#idea">Идея</a><a href="#proof">Не шутка</a><a href="#money">Деньги и метрики</a><a href="#plan">План запуска</a>
+      </nav>
+
+      <section id="idea" class="block-section" aria-labelledby="idea-title">
+        <h3 id="idea-title" class="section-title gradient-text">Идея простыми словами</h3>
+        <div id="idea-cards" class="cards"></div>
+      </section>
+
+      <section id="proof" class="block-section" aria-labelledby="proof-title">
+        <h3 id="proof-title" class="section-title gradient-text">Почему это не шутка</h3>
+        <ul id="proof-list" class="proof-list"></ul>
+      </section>
+
+      <section id="money" class="block-section" aria-labelledby="money-title">
+        <h3 id="money-title" class="section-title gradient-text">Деньги и метрики</h3>
+        <p class="section-lead">Подвигайте ползунки — числа, график и поток денег пересчитаются сразу. Это прикидка на салфетке, а не пророчество.</p>
+
+        <div class="dash" id="dash">
+          <div class="dash-controls glass" role="group" aria-label="Настройки симулятора">
+            <div class="slider" data-key="price"><div class="slider-head"><label for="sim-price" id="lbl-price">Цена</label><output id="out-price" for="sim-price"></output></div><input type="range" id="sim-price"><p class="slider-hint" id="hint-price"></p></div>
+            <div class="slider" data-key="reach"><div class="slider-head"><label for="sim-reach">Охват в месяц</label><output id="out-reach" for="sim-reach"></output></div><input type="range" id="sim-reach"><p class="slider-hint">Сколько людей из аудитории узнают о вас за месяц</p></div>
+            <div class="slider" data-key="conv"><div class="slider-head"><label for="sim-conv">Из них покупают</label><output id="out-conv" for="sim-conv"></output></div><input type="range" id="sim-conv"><p class="slider-hint">Доля узнавших, которые становятся клиентами</p></div>
+            <div class="slider" data-key="churn" id="slider-churn"><div class="slider-head"><label for="sim-churn">Отток в месяц</label><output id="out-churn" for="sim-churn"></output></div><input type="range" id="sim-churn"><p class="slider-hint">Какая доля клиентов уходит каждый месяц</p></div>
+            <div class="slider" data-key="fixed"><div class="slider-head"><label for="sim-fixed">Расходы в месяц</label><output id="out-fixed" for="sim-fixed"></output></div><input type="range" id="sim-fixed"><p class="slider-hint">Команда, сервисы, реклама, аренда — всё, что платите независимо от продаж</p></div>
+            <div class="slider slider-month" data-key="month"><div class="slider-head"><label for="sim-month">Смотрим, что будет через…</label><output id="out-month" for="sim-month"></output></div><input type="range" id="sim-month" min="1" max="24" step="1" value="12"></div>
+            <button type="button" id="sim-reset" class="btn btn-small">Сбросить настройки</button>
+          </div>
+
+          <div class="dash-main">
+            <dl class="kpis" id="kpis">
+              <div class="kpi" data-kpi="customers"><dt class="kpi-label" id="kpi-customers-label">Клиентов</dt><dd><span class="kpi-value gradient-text" aria-hidden="true"></span><span class="sr-only"></span><span class="kpi-note"></span></dd></div>
+              <div class="kpi" data-kpi="revenue"><dt class="kpi-label">Выручка в месяц</dt><dd><span class="kpi-value gradient-text" aria-hidden="true"></span><span class="sr-only"></span><span class="kpi-note"></span></dd></div>
+              <div class="kpi" data-kpi="profit"><dt class="kpi-label">Прибыль в месяц</dt><dd><span class="kpi-value" aria-hidden="true"></span><span class="sr-only"></span><span class="kpi-note"></span></dd></div>
+              <div class="kpi" data-kpi="year"><dt class="kpi-label">Выручка за первый год</dt><dd><span class="kpi-value gradient-text" aria-hidden="true"></span><span class="sr-only"></span><span class="kpi-note"></span></dd></div>
+              <div class="kpi" data-kpi="payback"><dt class="kpi-label">Вложения окупятся</dt><dd><span class="kpi-value gradient-text" aria-hidden="true"></span><span class="sr-only"></span><span class="kpi-note"></span></dd></div>
+            </dl>
+
+            <figure class="chart-card glass">
+              <figcaption>Выручка и расходы по месяцам</figcaption>
+              <svg id="chart" class="chart" viewBox="0 0 760 330" role="img" aria-label="График выручки и расходов"></svg>
+              <ul class="legend" aria-hidden="true"><li><i class="sw sw-rev"></i>Выручка</li><li><i class="sw sw-cost"></i>Расходы</li></ul>
+            </figure>
+
+            <figure class="flow-card glass">
+              <figcaption>Как течёт ваш бизнес</figcaption>
+              <svg id="flow" class="flow" viewBox="0 0 960 200" role="img" aria-label="Схема: аудитория узнаёт о продукте, часть людей покупает, деньги идут в кассу"></svg>
+              <ul class="flow-stats" aria-hidden="true">
+                <li><span class="flow-label">Аудитория</span><span class="flow-num" id="flow-reach"></span><span class="flow-sub">узнают о вас в месяц</span></li>
+                <li><span class="flow-label" id="flow-name"></span><span class="flow-num" id="flow-fresh"></span><span class="flow-sub" id="flow-fresh-sub"></span></li>
+                <li><span class="flow-label">Касса</span><span class="flow-num" id="flow-money"></span><span class="flow-sub">выручка в месяц</span></li>
+              </ul>
+            </figure>
+
+            <p id="sim-insight" class="insight" aria-live="polite"></p>
+            <p id="sim-assume" class="assume"></p>
+            <div class="targets glass"><h4>Цели по метрикам</h4><ul id="targets-list"></ul></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="plan" class="block-section" aria-labelledby="plan-title">
+        <h3 id="plan-title" class="section-title gradient-text">План запуска: что изучить, чему научиться, что делать</h3>
+        <p class="section-lead">Идите по шагам — отмечайте галочками. Каждый этап заканчивается проверкой «готово, если…».</p>
+        <div id="plan-body" class="plan"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <svg class="brand-word" viewBox="0 0 326 104" aria-hidden="true" focusable="false"><use href="#upstar-wordmark"/></svg>
+    <p>UPstar — генератор идей: названия, шутки и цифры в нём придуманы для вдохновения. Числа в симуляторе — прикидка, а не обещание дохода; конкуренты и цены — ориентиры, проверьте актуальность.</p>
+  </footer>
+
+  <div id="live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <template id="row-template">
+    <li class="row">
+      <button type="button" class="pick" aria-pressed="false" tabindex="-1"></button>
+      <button type="button" class="icon-btn edit" tabindex="-1"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#u-edit"/></svg></button>
+      <button type="button" class="icon-btn del" tabindex="-1"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#u-trash"/></svg></button>
+    </li>
+  </template>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
